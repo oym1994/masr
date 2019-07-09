@@ -2,7 +2,7 @@
 
 **MASR**是一个基于**端到端的深度神经网络**的**开箱即用**的**中文普通话语音识别**工具。
 
-最新更新：[使用声学嵌入查找音近字](docs/embedding.md)
+最新更新：现已支持docker！告别繁琐安装过程！参见[使用docker](#使用docker)
 
 MASR的特点是：
 
@@ -135,6 +135,12 @@ python examples/demo-record-recognize.py
 
 ### 添加语言模型
 
+添加语言模型需要一些额外的依赖，你可以自行安装或使用docker。
+
+如果你了解docker，或者自行安装时或安装完后运行masr时遇到错误，则推荐[使用docker](#使用docker)。
+
+#### 自行安装
+
 1. 在你尝试添加语言模型之前，请确认你已经安装了`pyaudio`，参见[识别自己的语音](#识别自己的语音)。
 
 2. 同时，你还需要安装Flask，这很简单，`pip install flask`即可。我们需要它来启动识别的web服务。
@@ -188,6 +194,17 @@ python examples/demo-record-recognize.py
    ```
 
    然后，请将`examples/demo-client.py`中的服务器地址的ip部分改成你的服务器ip，如果你都是在本机上进行的，则不需要修改，使用默认的`localhost`即可。
+
+#### 使用docker
+
+docker使用起来就像虚拟机一样，同时有着原生的性能。使用docker来运行masr非常方便。
+
+```sh
+docker pull libai3/masr-env:latest
+
+cd masr
+docker run -v $(pwd):/workspace/masr -p 5000:5000 libai3/masr-env:latest
+```
 
 ### 感受喜悦
 
